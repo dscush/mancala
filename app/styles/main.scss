@@ -1,0 +1,28 @@
+$cell-size: 100px;
+$text-size: $cell-size / 2;
+$border-radius: $cell-size / 3;
+table {
+    border: black solid 1px;
+    border-radius: $border-radius;
+    padding: $cell-size / 5;
+}
+td {
+    width: $cell-size;
+    height: $cell-size;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+    font-size: $text-size;
+    &.store {
+        border: black solid 1px;
+        border-radius: $border-radius;
+    }
+    button {
+        border-radius: $border-radius;
+        font-size: $text-size;
+        width: 100%;
+        height: 100%;
+        padding: 0;
+        margin: 0;
+    }
+}

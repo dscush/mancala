@@ -1,0 +1,1 @@
+Web app and AI to play the board game Mancala
