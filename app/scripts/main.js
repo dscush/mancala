@@ -2,5 +2,7 @@
 
 /* global $ */
 var drawBoard = function(board) {
-    // TODO: draw the board
+    for (var i in board) {
+        $('#' + i).text(board[i]);
+    }
 };
