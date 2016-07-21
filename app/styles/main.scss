@@ -24,5 +24,8 @@ td {
         height: 100%;
         padding: 0;
         margin: 0;
+        &.last-move {
+            border: black 5px solid;
+        }
     }
 }
