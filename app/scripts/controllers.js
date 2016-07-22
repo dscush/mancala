@@ -15,25 +15,26 @@ boardCtlr.drawBoard = function(board, msg, lastMove) {
         $('#' + i).removeClass("last-move");
     }
     $('#' + lastMove).addClass("last-move");
-    $('#turn').text(msg)
+    $('#turn').text(msg);
+    
 };
 
 boardCtlr.playMove = function(id) {
     var playerTurn = board.playMove(id);
     var msg;
     if (playerTurn === -1) {
-        msg = "Game over - "
+        msg = "Game over - ";
         if (board.store[0] > board.store[1]) {
-            msg += "bottom player wins!"
+            msg += "bottom player wins!";
         } else if (board.store[0] < board.store[1]) {
-            msg += "top player wins!"
+            msg += "top player wins!";
         } else {
-            msg += "It's a Tie!"
+            msg += "It's a Tie!";
         }
     } else if (playerTurn === 0) {
-        msg = "Bottom player's turn"
+        msg = "Bottom player's turn";
     } else {
-        msg = "Top player's turn"
+        msg = "Top player's turn";
     }
     boardCtlr.drawBoard(board.board, msg, id);
 };
