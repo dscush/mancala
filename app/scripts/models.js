@@ -62,6 +62,9 @@ BoardModel.prototype.oppositePit = function(pit) {
 
 BoardModel.prototype.playMove = function(pit) {
     var currentSpot, i;
+    if (this.isGameOver()) {
+        throw new WrongTurnError("The game is over - no more turns.");
+    }
     if (!this.isPitOnCurrentPlayersSide(pit)) {
         throw new WrongTurnError("Pit number " + pit + " belongs to player " + (this.playerTurn + 1) % 2 + ", but it's not their turn.");
     }
