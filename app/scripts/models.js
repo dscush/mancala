@@ -96,6 +96,16 @@ BoardModel.prototype.playMove = function(pit) {
     }
     if (this.isGameOver()) {
         this.playerTurn = -1;
+        for (var i = 0; i < this.store[0]; i++) {
+            this.board[this.store[0]] += this.board[i];
+            this.board[i] = 0;
+        }
+        for (var i = this.store[0] + 1; i < this.store[1]; i++) {
+            if (this.board[i] > 0) {
+            this.board[this.store[1]] += this.board[i];
+            this.board[i] = 0;
+            }
+        }
     }
     return this.playerTurn;
 }
