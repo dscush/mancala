@@ -25,7 +25,7 @@ BoardController.prototype.playMove = function(id) {
     var msg;
     if (playerTurn === -1) {
         msg = "Game over - ";
-        if (this.model.store[0] > this.model.store[1]) {
+        if (this.board[this.model.store[0]] > this.board[this.model.store[1]]) {
             msg += "bottom player wins!";
         } else if (this.model.store[0] < this.model.store[1]) {
             msg += "top player wins!";

@@ -29,6 +29,7 @@ function BoardModel(boardLength=14, stonesPerPit=4) {
     }
     this.board[boardLength / 2 - 1] = 0;
     this.board[boardLength - 1] = 0;
+    //Player 0 is bottom, player 1 is top
     this.playerTurn = 0;
     this.store = [this.boardLength / 2 - 1, this.boardLength - 1]
 }
