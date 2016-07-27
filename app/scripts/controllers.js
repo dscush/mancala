@@ -2,15 +2,16 @@
 
 /* global $, BoardModel */
 
-var boardCtlr = {};
-var board = new BoardModel();
+function BoardController(boardLength=14, stonesPerPit=4) {
+    this.model = new BoardModel(boardLength, stonesPerPit);
+}
 
-boardCtlr.drawBoard = function(board, msg, lastMove) {
-    for (var i in board) {
-        if (board[i] == 0) {
+BoardController.prototype.drawBoard = function(msg, lastMove) {
+    for (var i in this.model.board) {
+        if (this.model.board[i] == 0) {
             $('#' + i).text('');
         } else {
-            $('#' + i).text(board[i]);
+            $('#' + i).text(this.model.board[i]);
         }
         $('#' + i).removeClass("last-move");
     }
@@ -19,14 +20,14 @@ boardCtlr.drawBoard = function(board, msg, lastMove) {
     
 };
 
-boardCtlr.playMove = function(id) {
-    var playerTurn = board.playMove(id);
+BoardController.prototype.playMove = function(id) {
+    var playerTurn = this.model.playMove(id);
     var msg;
     if (playerTurn === -1) {
         msg = "Game over - ";
-        if (board.store[0] > board.store[1]) {
+        if (this.model.store[0] > this.model.store[1]) {
             msg += "bottom player wins!";
-        } else if (board.store[0] < board.store[1]) {
+        } else if (this.model.store[0] < this.model.store[1]) {
             msg += "top player wins!";
         } else {
             msg += "It's a Tie!";
@@ -36,12 +37,5 @@ boardCtlr.playMove = function(id) {
     } else {
         msg = "Top player's turn";
     }
-    boardCtlr.drawBoard(board.board, msg, id);
+    this.drawBoard(msg, id);
 };
-
-$(document).ready(function(){
-    $('button.pit').click(function(){
-        boardCtlr.playMove($(this).attr('id'));
-    });
-    boardCtlr.drawBoard(board.board, "Bottom player's goes first");
-});

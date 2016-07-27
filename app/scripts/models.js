@@ -1,6 +1,6 @@
 "use strict";
 
-/* global $, boardCtlr */
+/* global $ */
 
 function WrongTurnError(message) {
     this.name = "WrongTurnError";
