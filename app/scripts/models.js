@@ -1,7 +1,5 @@
 "use strict";
 
-/* global $ */
-
 function WrongTurnError(message) {
     this.name = "WrongTurnError";
     this.message = (message || "It's not that player's turn right now.");
@@ -31,7 +29,7 @@ function BoardModel(boardLength=14, stonesPerPit=4) {
     this.board[boardLength - 1] = 0;
     //Player 0 is bottom, player 1 is top
     this.playerTurn = 0;
-    this.store = [this.boardLength / 2 - 1, this.boardLength - 1]
+    this.store = [this.boardLength / 2 - 1, this.boardLength - 1];
 }
 
 BoardModel.prototype.isGameOver = function() {
@@ -47,19 +45,19 @@ BoardModel.prototype.isGameOver = function() {
         }
     }
     return p0done || p1done;
-}
+};
 
 BoardModel.prototype.isPitOnCurrentPlayersSide = function(pit) {
     return this.playerTurn === 0 && pit < this.boardLength / 2 ||
         this.playerTurn === 1 && pit >= this.boardLength / 2;
-}
+};
 
 BoardModel.prototype.oppositePit = function(pit) {
     if (this.store.indexOf(pit) !== -1) {
         throw new ReferenceError("There are no opposite pits for the stores");
     }
     return this.boardLength - 2 - pit;
-}
+};
 
 BoardModel.prototype.playMove = function(pit) {
     var currentSpot, i;
@@ -108,4 +106,4 @@ BoardModel.prototype.playMove = function(pit) {
         }
     }
     return this.playerTurn;
-}
+};

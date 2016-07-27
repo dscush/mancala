@@ -1,6 +1,6 @@
 "use strict";
 
-/* global $, BoardModel, BoardController */
+/* global $, BoardController */
 
 var controller = new BoardController();
 
