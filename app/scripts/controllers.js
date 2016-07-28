@@ -26,6 +26,23 @@ BoardController.prototype.drawBoard = function(msg, lastMove) {
         $('#' + i).removeClass("last-move");
     }
     $('#' + lastMove).addClass("last-move");
+    if (this.model.playerTurn === 1 || this.p0ai) {
+        for (var i = 0; i < this.model.boardLength / 2 - 1; i++) {
+            $('#' + i).prop("disabled", true);
+        }
+    } else {
+        for (var i = 0; i < this.model.boardLength / 2 - 1; i++) {
+            $('#' + i).prop("disabled", false);
+        }
+    } if (this.model.playerTurn === 0 || this.p1ai) {
+        for (var i = this.model.boardLength / 2; i < this.model.boardLength - 1; i++) {
+            $('#' + i).prop("disabled", true);
+        }
+    } else {
+        for (var i = this.model.boardLength / 2; i < this.model.boardLength - 1; i++) {
+            $('#' + i).prop("disabled", false);
+        }
+    }
     $('#turn').text(msg);
 };
 
