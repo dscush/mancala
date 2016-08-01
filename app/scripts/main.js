@@ -1,8 +1,8 @@
 "use strict";
 
-/* global $, BoardController, RandomAI, MinimaxAI */
+/* global $, BoardController, RandomAI, MinimaxAI, AlphaBetaAI */
 
-var controller = new BoardController(new MinimaxAI(0));
+var controller = new BoardController(new AlphaBetaAI(0));
 
 $(document).ready(function(){
     $('button.pit').click(function(){
