@@ -29,3 +29,10 @@ td {
         }
     }
 }
+button.new-game {
+    width: 100%;
+}
+
+div.new-game {
+    width: $cell-size * 3;
+}

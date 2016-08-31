@@ -2,14 +2,20 @@
 
 /* global $, BoardModel */
 
-function BoardController(p0ai=null, p1ai=null, boardLength=14, stonesPerPit=4, quickPlay=false) {
-    this.p0ai = p0ai;
-    this.p1ai = p1ai;
+function BoardController(boardLength=14, stonesPerPit=4, quickPlay=false) {
     this.quickPlay = quickPlay;
     this.model = new BoardModel(boardLength, stonesPerPit);
 }
 
-BoardController.prototype.startGame = function() {
+BoardController.prototype.startGame = function(humanPlayer) {
+    this.p0ai = null;
+    this.p1ai = null;
+    if (humanPlayer == 0) {
+        this.p1ai = new AlphaBetaAI(1);
+    } else if (humanPlayer == 1) {
+        this.p0ai = new AlphaBetaAI(0);
+    }
+    new AlphaBetaAI(0)
     this.drawBoard("Bottom player goes first");
     if (this.p0ai) {
         this.playMove(this.p0ai.playMove(this.model));
