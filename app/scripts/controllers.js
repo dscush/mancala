@@ -1,13 +1,15 @@
 "use strict";
 
-/* global $, BoardModel */
+/* global $, BoardModel, RandomAI, MinimaxAI, AlphaBetaAI */
 
 function BoardController(boardLength=14, stonesPerPit=4, quickPlay=false) {
+    this.boardLength = boardLength;
+    this.stonesPerPit = stonesPerPit;
     this.quickPlay = quickPlay;
-    this.model = new BoardModel(boardLength, stonesPerPit);
 }
 
 BoardController.prototype.startGame = function(humanPlayer) {
+    this.model = new BoardModel(this.boardLength, this.stonesPerPit);
     this.p0ai = null;
     this.p1ai = null;
     if (humanPlayer == 0) {
@@ -64,6 +66,7 @@ BoardController.prototype.playMove = function(id) {
         } else {
             msg += "It's a Tie!";
         }
+        msg += "  Start a new game with the buttons above.";
     } else if (playerTurn === 0) {
         msg = "Bottom player's turn";
     } else {

@@ -1,6 +1,6 @@
 "use strict";
 
-/* global $, BoardController, RandomAI, MinimaxAI, AlphaBetaAI */
+/* global $, BoardController */
 
 var controller = new BoardController();
 
